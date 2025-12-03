@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cleverton ♥ Maria - Meu Amor Por Você</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%);
+        }
+
+        .floating-hearts {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 2rem;
+            animation: float 15s infinite;
+            opacity: 0.6;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.6;
+            }
+            90% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: fadeInDown 1s ease;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease 0.5s both;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-20px);
+            }
+            60% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section {
+            min-height: 100vh;
+            padding: 5rem 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.95);
+            color: #333;
+        }
+
+        .section:nth-child(even) {
+            background: rgba(240, 240, 255, 0.95);
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #667eea;
+            text-align: center;
+        }
+
+        .letter {
+            background: white;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        .letter p {
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+
+        .memories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .memory-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .memory-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.3);
+        }
+
+        .memory-card h3 {
+            color: #764ba2;
+            margin-bottom: 1rem;
+        }
+
+        .photo-gallery {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .photo-frame {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .photo-frame:hover {
+            transform: scale(1.02);
+            box-shadow: 0 15px 50px rgba(102, 126, 234, 0.3);
+        }
+
+        .photo-frame img {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .photo-frame.solo img {
+            max-width: 350px;
+        }
+
+        .photo-caption {
+            font-size: 1.1rem;
+            color: #667eea;
+            font-style: italic;
+            line-height: 1.6;
+        }
+
+        .reasons {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .reason {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-left: 5px solid #667eea;
+        }
+
+        .reason h3 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        .final-message {
+            text-align: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 5rem 2rem;
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .final-message h2 {
+            color: white;
+            font-size: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .final-message p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .signature {
+            margin-top: 3rem;
+            font-size: 2rem;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            .letter {
+                padding: 2rem;
+            }
+            
+            .final-message h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <div class="floating-hearts" id="hearts"></div>
+        <h1>Maria, Meu Grande Amor</h1>
+        <p class="subtitle">Uma declaração sincera de Cleverton</p>
+        <div class="scroll-indicator">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="white">
+                <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+            </svg>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="container">
+            <h2>Minha Carta Para Você</h2>
+            <div class="letter">
+                <p>Maria,</p>
+                <p>Não existem palavras suficientes para expressar o que sinto por você. Desde que nos separamos, um vazio imenso tomou conta do meu coração. Cada dia sem você é um lembrete doloroso de tudo que perdemos, de tudo que fomos e de tudo que ainda poderíamos ser.</p>
+                <p>Eu sei que cometi erros. Sei que houve momentos em que não fui o parceiro que você merecia. Mas quero que saiba que cada erro me ensinou, cada ausência me mostrou o quanto você é importante, e cada noite sem você me fez entender que meu lugar é ao seu lado.</p>
+                <p>Você não é apenas meu amor, você é minha melhor amiga, minha confidente, minha inspiração. Você trouxe cor para meus dias cinzas e significado para momentos que seriam vazios sem você. Seus sorrisos iluminaram minha vida de uma forma que ninguém mais conseguiu.</p>
+                <p>Eu não quero apenas te ter de volta, Maria. Eu quero construir algo ainda mais forte, mais verdadeiro, mais bonito. Quero ser o homem que você merece, aquele que te valoriza todos os dias, que te faz sentir especial, que caminha ao seu lado em todos os momentos.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="container">
+            <h2>Você e Eu - Nossa História em Imagens</h2>
+            <div class="photo-gallery">
+                <div class="photo-frame">
+                    <img src="./Imagem do WhatsApp de 2025-12-03 à(s) 15.22.09_ef50116a.jpg" alt="Cleverton e Maria juntos">
+                    <p class="photo-caption">Nós dois... Esse momento ficou gravado no meu coração para sempre ❤️</p>
+                </div>
+                <div class="photo-frame solo">
+                    <img src="./Imagem do WhatsApp de 2025-12-03 à(s) 15.22.09_aa28b085.jpg" alt="Cleverton">
+                    <p class="photo-caption">Eu pensando em você... sempre em você, Maria 💭</p>
+                </div>
+            </div>
+            <div class="memories">
+                <div class="memory-card">
+                    <h3>💫 Cada Momento Ao Seu Lado</h3>
+                    <p>Essas fotos representam muito mais que imagens. São pedaços do meu coração, momentos onde eu era completamente feliz ao seu lado. Seu sorriso iluminava meus dias.</p>
+                </div>
+                <div class="memory-card">
+                    <h3>🌙 O Vazio Da Sua Ausência</h3>
+                    <p>Desde que você se foi, olho para essas lembranças e meu coração aperta. Cada foto é um lembrete de tudo que perdemos, de tudo que eu quero de volta.</p>
+                </div>
+                <div class="memory-card">
+                    <h3>☀️ Nossos Sorrisos Juntos</h3>
+                    <p>Lembra como éramos felizes? Como ríamos juntos? Eu quero voltar a ver esse sorriso no seu rosto quando você olha pra mim. Quero ser seu motivo de sorrir novamente.</p>
+                </div>
+                <div class="memory-card">
+                    <h3>❤️ Meu Amor Por Você</h3>
+                    <p>Estas imagens provam que o que tivemos foi real, foi especial, foi único. E ainda é! Meu amor por você não mudou, só cresceu com a sua falta.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="container">
+            <h2>Por Que Eu Te Amo</h2>
+            <div class="reasons">
+                <div class="reason">
+                    <h3>Sua Essência Única</h3>
+                    <p>Você é genuína, verdadeira e autêntica. Em um mundo de aparências, você brilha com sua luz própria. Sua personalidade é magnética e me faz querer ser uma pessoa melhor.</p>
+                </div>
+                <div class="reason">
+                    <h3>Seu Coração Generoso</h3>
+                    <p>A forma como você se importa com as pessoas, como demonstra carinho e atenção, é inspiradora. Seu coração imenso tem espaço para amar de forma profunda e verdadeira.</p>
+                </div>
+                <div class="reason">
+                    <h3>Nossa Conexão</h3>
+                    <p>O que temos é raro, Maria. Não é só atração ou companhia. É uma conexão de almas, uma sintonia que vai além das palavras. Quando estou com você, me sinto completo.</p>
+                </div>
+                <div class="reason">
+                    <h3>Seu Sorriso</h3>
+                    <p>Seu sorriso ilumina meus dias mais escuros. Ver você feliz é minha maior felicidade. Quero passar o resto da minha vida sendo motivo desse sorriso.</p>
+                </div>
+                <div class="reason">
+                    <h3>Nossa História</h3>
+                    <p>Tudo que construímos juntos, cada memória, cada momento compartilhado, é precioso demais para deixar no passado. Nossa história merece um novo capítulo.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="final-message">
+        <h2>Meu Pedido Final</h2>
+        <p>Maria, eu te amo. Amo com a mesma intensidade do primeiro dia, mas agora com a maturidade de quem sabe o valor do que tem. Não quero viver sem você. Não quero acordar sem poder te abraçar, não quero dormir sem te desejar boa noite. Cada foto, cada lembrança me faz ter certeza: você é o amor da minha vida.</p>
+        <p>Quando olho para nossas fotos juntos, vejo a felicidade estampada em nossos rostos. Éramos perfeitos juntos, e ainda podemos ser. Aquele sorriso seu que eu tanto amo, aqueles momentos que compartilhamos... isso não pode ficar apenas nas lembranças. Quero criar novos momentos, novas fotos, novas histórias ao seu lado.</p>
+        <p>Me dê uma chance de provar que posso ser o homem que você sempre mereceu. Uma chance de construirmos juntos o futuro que sempre sonhamos. Uma chance de fazer você sorrir todos os dias e de te amar da forma certa. Quero voltar a ser aquele que te faz feliz, como nas nossas fotos juntos.</p>
+        <p>Você é meu amor, minha vida, meu tudo. Sem você, eu sou apenas metade de mim mesmo. Com você, sou completo.</p>
+        <p>Por favor, volte para mim. Vamos recomeçar, vamos fazer diferente, vamos fazer dar certo.</p>
+        <div class="signature">
+            Com todo meu amor,<br>
+            Cleverton ❤️
+        </div>
+    </div>
+
+    <script>
+        const heartsContainer = document.getElementById('hearts');
+        const heartSymbols = ['❤️', '💕', '💗', '💖', '💝', '💘'];
+        
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.textContent = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDuration = (Math.random() * 10 + 10) + 's';
+            heart.style.animationDelay = Math.random() * 5 + 's';
+            heartsContainer.appendChild(heart);
+            
+            setTimeout(() => {
+                heart.remove();
+            }, 20000);
+        }
+        
+        for (let i = 0; i < 20; i++) {
+            setTimeout(createHeart, i * 1000);
+        }
+        
+        setInterval(createHeart, 2000);
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
